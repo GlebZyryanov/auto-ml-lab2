@@ -12,17 +12,17 @@ pipeline {
         }
         stage('Data Preparation') {
             steps {
-                sh 'venv/bin/python src/data_preparation.py'
+                sh 'venv/bin/python data_preparation.py'
             }
         }
         stage('Model Training') {
             steps {
-                sh 'venv/bin/python src/model_training.py'
+                sh 'venv/bin/python model_training.py'
             }
         }
         stage('Model Evaluation') {
             steps {
-                sh 'venv/bin/python src/model_evaluation.py'
+                sh 'venv/bin/python model_evaluation.py'
                 archiveArtifacts artifacts: 'metrics.txt, model.pkl', fingerprint: true
             }
         }
